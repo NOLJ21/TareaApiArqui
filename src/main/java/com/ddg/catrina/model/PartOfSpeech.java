@@ -6,28 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
 @Entity
-@Table(name = "words")
-public class Word
+@Table(name = "part_of_speech")
+public class PartOfSpeech
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 50)
+    @Column(name = "name", length = 25)
     private String name;
 
-    @Column(name = "description", length = 500)
+    @Column(name = "description", length = 300)
     private String description;
-
-    @Column(name = "status")
-    private Boolean status;
-
-    @ManyToOne
-    @JoinColumn(name = "part_of_speech_id", referencedColumnName = "id")
-    private PartOfSpeech partOfSpeech;
 }

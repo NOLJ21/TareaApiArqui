@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  java-app:
+    container_name: java-app
+    image: java-app
+    build: .
+    ports:
+      - "7777:7777"
+    environment:
+        - DB_URL=jdbc:mysql://java-db:3306/java_db
+        - DB_USER=root
+        - DB_PASSWORD=root
+    depends_on:
+      - java-db
+
+  java-db:

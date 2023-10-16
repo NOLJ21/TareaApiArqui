@@ -1,12 +1,12 @@
 package com.ddg.catrina.service;
 
-import com.ddg.catrina.dto.Entry;
-import com.fasterxml.jackson.databind.JsonNode;
-import org.hibernate.mapping.Any;
+import com.ddg.catrina.dto.Dictionary11;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Dictionary;
 import java.util.List;
 
 @Service
@@ -18,7 +18,7 @@ public class ExternalWordService
     private RestTemplate restTemplate = new RestTemplate();
 
     @Value("${miapp.ruta}")
-    private String url;
+    private final String url = new String();
 
     public ExternalWordService() {}
 
@@ -27,9 +27,11 @@ public class ExternalWordService
         this.restTemplate = restTemplate;
     }
 
-    public List<Entry> getWord(String word)
+    public List<Dictionary11> getWord(String word)
     {
-        url = url + word;
-        return restTemplate.getForObject(url, List.class);
+        String aux = new String();
+        aux = url + word;
+        Dictionary11[] response = restTemplate.getForObject(aux, Dictionary11[].class);
+        return List.of(response);
     }
 }

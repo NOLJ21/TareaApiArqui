@@ -1,53 +1,22 @@
 package com.ddg.catrina.dto;
 
+import lombok.Data;
+import com.fasterxml.jackson.annotation.*;
 import java.util.List;
 
+@Data
 public class Definition
 {
+    @lombok.Getter(onMethod_ = {@JsonProperty("definition")})
+    @lombok.Setter(onMethod_ = {@JsonProperty("definition")})
     private String definition;
-    private List<String> synonyms;
-    private List<String> antonyms;
+    @lombok.Getter(onMethod_ = {@JsonProperty("synonyms")})
+    @lombok.Setter(onMethod_ = {@JsonProperty("synonyms")})
+    private List<Object> synonyms;
+    @lombok.Getter(onMethod_ = {@JsonProperty("antonyms")})
+    @lombok.Setter(onMethod_ = {@JsonProperty("antonyms")})
+    private List<Object> antonyms;
+    @lombok.Getter(onMethod_ = {@JsonProperty("example")})
+    @lombok.Setter(onMethod_ = {@JsonProperty("example")})
     private String example;
-
-    public Definition() {}
-
-    public Definition(String definition, List<String> synonyms, List<String> antonyms, String example)
-    {
-        this.definition = definition;
-        this.synonyms = synonyms;
-        this.antonyms = antonyms;
-        this.example = example;
-    }
-
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
-    public List<String> getSynonyms() {
-        return synonyms;
-    }
-
-    public void setSynonyms(List<String> synonyms) {
-        this.synonyms = synonyms;
-    }
-
-    public List<String> getAntonyms() {
-        return antonyms;
-    }
-
-    public void setAntonyms(List<String> antonyms) {
-        this.antonyms = antonyms;
-    }
-
-    public String getExample() {
-        return example;
-    }
-
-    public void setExample(String example) {
-        this.example = example;
-    }
 }
